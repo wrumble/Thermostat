@@ -1,6 +1,8 @@
 function Thermostat(){
   this.DEFAULT_TEMP = 20;
   this.MIN_TEMP = 10;
+  this.MAX_TEMP = 25;
+  this._isPSMOn = true;
   this._temperature = this.DEFAULT_TEMP;
 
   this.temperature = function() {
@@ -8,7 +10,9 @@ function Thermostat(){
   };
 
   this.increaseTemp = function() {
-    this._temperature ++;
+    if(this._temperature < this.MAX_TEMP) {
+      this._temperature ++;
+    }
   };
 
   this.decreaseTemp = function() {
@@ -18,6 +22,19 @@ function Thermostat(){
   };
 
   this.isPSMOn = function() {
-    return true;
+    return this._isPSMOn;
+  };
+
+  this.togglePSM = function() {
+    this._isPSMOn = !this._isPSMOn;
+    this._setMaxTemp();
+  };
+
+  this._setMaxTemp = function() {
+    if(this._isPSMOn) {
+      this.MAX_TEMP = 25;
+    } else {
+      this.MAX_TEMP = 32;
+    }
   };
 }

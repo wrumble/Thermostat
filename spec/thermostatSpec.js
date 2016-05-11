@@ -6,8 +6,12 @@ describe("Thermostat", function() {
     thermostat = new Thermostat();
   });
 
-  it("has an default temperature", function() {
+  it('has an default temperature', function() {
     expect(thermostat.temperature()).toEqual(thermostat.DEFAULT_TEMP);
+  });
+
+  it('starts in power saving mode', function() {
+    expect(thermostat.isPSMOn()).toEqual(true);
   });
 
   it('can increase the temperature', function() {
@@ -30,8 +34,20 @@ describe("Thermostat", function() {
     expect(thermostat.temperature()).toEqual(thermostat.MIN_TEMP);
   });
 
-  it('starts in power saving mode', function() {
-    expect(thermostat.isPSMOn()).toEqual(true);
+
+  it('has a max temperature', function() {
+    thermostat._temperature = thermostat.MAX_TEMP;
+    thermostat.increaseTemp();
+    expect(thermostat.temperature()).toEqual(thermostat.MAX_TEMP);
+  })
+
+  it('has a max temperature of 25 when PSM is on', function() {
+    expect(thermostat.MAX_TEMP).toEqual(25);
+  });
+
+  it('has a max temperature of 32 when PSM is off', function() {
+    thermostat.togglePSM();
+    expect(thermostat.MAX_TEMP).toEqual(32);
   });
 
 });
