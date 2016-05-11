@@ -55,4 +55,18 @@ describe("Thermostat", function() {
     expect(thermostat.temperature()).toEqual(thermostat.DEFAULT_TEMP);
   });
 
+  it('changes display colour to green if temperature is less than 18', function() {
+    thermostat._temperature = 17;
+    expect(thermostat.display()).toEqual('green');
+  });
+
+  it('changes display colour to yellow if temperature is between 18 and 25', function() {
+    expect(thermostat.display()).toEqual('yellow');
+  });
+
+  it('changes display colour to red if temperature is 25 and above', function() {
+    thermostat._temperature = thermostat.MAX_TEMP;
+    expect(thermostat.display()).toEqual('red');
+  });
+
 });

@@ -34,6 +34,15 @@ function Thermostat(){
     this._temperature = this.DEFAULT_TEMP;
   };
 
+  this.display = function() {
+    if(this._temperature < 18) {
+      return 'green';
+    } else if(this._temperature > 24) {
+      return 'red';
+    }
+    return 'yellow';
+  };
+
   this._setMaxTemp = function() {
     if(this._isPSMOn) {
       this.MAX_TEMP = 25;
