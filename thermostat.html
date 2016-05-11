@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script type="text/javascript" src="src/thermostat.js"></script>
     <title>Thermo-5000</title>
+    <script type="text/javascript" src="src/thermostat.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="src/script.js"></script>
   </head>
   <body>
 
@@ -14,11 +16,11 @@
       <p>Power Saving Mode: on/off</p>
     </div>
 
-    <div id="control-panel">
-      <button type="button" name="button" value="Temp. Up"></button>
-      <button type="button" name="button" value="Temp. Down"></button>
-      <button type="button" name="button" value="Temp. Reset"></button>
-      <button type="button" name="button" value="Toggle PSM"></button>
+    <div id='control-panel'>
+      <input type='button' id='temp-up' value='Temp Up'/>
+      <input type='button' id='temp-down' value='Temp Down'/>
+      <input type='button' id='temp-reset' value='Reset Temp'/>
+      <input type='button' id='psm-toggle' value='Toggle PSM'/>
     </div>
 
   </body>
