@@ -30,6 +30,10 @@ function Thermostat(){
     this._setMaxTemp();
   };
 
+  this.reset = function() {
+    this._temperature = this.DEFAULT_TEMP;
+  };
+
   this._setMaxTemp = function() {
     if(this._isPSMOn) {
       this.MAX_TEMP = 25;

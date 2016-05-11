@@ -39,7 +39,7 @@ describe("Thermostat", function() {
     thermostat._temperature = thermostat.MAX_TEMP;
     thermostat.increaseTemp();
     expect(thermostat.temperature()).toEqual(thermostat.MAX_TEMP);
-  })
+  });
 
   it('has a max temperature of 25 when PSM is on', function() {
     expect(thermostat.MAX_TEMP).toEqual(25);
@@ -48,6 +48,11 @@ describe("Thermostat", function() {
   it('has a max temperature of 32 when PSM is off', function() {
     thermostat.togglePSM();
     expect(thermostat.MAX_TEMP).toEqual(32);
+  });
+
+  it('can reset the temperature to 20', function() {
+    thermostat.reset();
+    expect(thermostat.temperature()).toEqual(thermostat.DEFAULT_TEMP);
   });
 
 });
