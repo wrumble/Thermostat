@@ -1,48 +1,49 @@
 var thermostat = new Thermostat();
 
-$(document).ready(function() {
+$(document).ready(function(){
 
-  displayTemp();
+  temperature();
   PSMStatus();
-  updateColour();
+  displayColor();
 
   $('#temp-up').click(function(){
     thermostat.increaseTemp();
-    displayTemp();
-    updateColour();
+    temperature();
+    displayColor();
   });
 
   $('#temp-down').click(function(){
     thermostat.decreaseTemp();
-    displayTemp();
-    updateColour();
+    temperature();
+    displayColor();
   });
 
-  $('#temp-reset').click(function() {
+  $('#temp-reset').click(function(){
     thermostat.reset();
-    displayTemp();
+    temperature();
   });
 
-  $('#psm-toggle').click(function() {
+  $('#psm-toggle').click(function(){
     thermostat.togglePSM();
     PSMStatus();
   });
 
 });
 
-var displayTemp = function() {
+
+var temperature = function(){
   $('h2').text(thermostat.temperature());
 };
 
-var PSMStatus = function() {
-  $('p').text(function() {
-    if(thermostat.isPSMOn()) {
-      return "Power Saving Mode: On";
+var PSMStatus = function(){
+  $('p').text(function(){
+    if(thermostat.isPSMOn()){
+      return "PSM mode is ON";
     }
-    return "Power Saving Mode: Off";
+    return "PSM mode is OFF";
   });
 };
 
-var updateColour = function() {
-  $('#display-panel').css("background-color", thermostat.display());
+var displayColor = function(){
+  $('body').css("background-color", thermostat.display());
 };
