@@ -28,6 +28,13 @@ $(document).ready(function(){
     PSMStatus();
   });
 
+$('#current-city').change(function() {
+  var city = $('#current-city').val();
+  $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + ',uk&appid=d026d4e8f9ffccb0def19c789052122c&units=metric', function(data) {
+    $('#temperature').text(data.main.temp);
+  });
+});
+
 });
 
 
